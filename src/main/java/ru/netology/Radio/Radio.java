@@ -1,11 +1,31 @@
 package ru.netology.Radio;
 
 public class Radio {
-    // переключение каналов
     private int currentStation;
+    private int currentVolume;
 
     public int getCurrentStation() {
         return currentStation;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void next() {
+        setCurrentStation(currentStation++);
+    }
+
+    public void prev() {
+        setCurrentStation(currentStation--);
+    }
+
+    public void more() {
+        setCurrentVolume(currentVolume++);
+    }
+
+    public void less() {
+        setCurrentVolume(currentVolume--);
     }
 
     public void setCurrentStation(int currentStation) {
@@ -18,21 +38,6 @@ public class Radio {
         this.currentStation = currentStation;
     }
 
-    public void next() {
-        setCurrentStation(currentStation = currentStation + 1);
-    }
-
-    public void prev() {
-        setCurrentStation(currentStation = currentStation - 1);
-    }
-
-    // уровень громкости
-    private int currentVolume;
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
     public void setCurrentVolume(int currentVolume) {
         if (currentVolume <= 0) {
             currentVolume = 0;
@@ -41,13 +46,5 @@ public class Radio {
             currentVolume = 10;
         }
         this.currentVolume = currentVolume;
-    }
-
-    public void more() {
-        setCurrentVolume(currentVolume = currentVolume + 1);
-    }
-
-    public void less() {
-        setCurrentVolume(currentVolume = currentVolume - 1);
     }
 }
