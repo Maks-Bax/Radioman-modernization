@@ -1,9 +1,9 @@
 package ru.netology.Radio;
 
 public class Radio {
-    private int currentStation = 10;
+    private int currentStation;
     private int currentVolume;
-    private int Stations;
+    private int Stations = 10;
 
     public Radio(int stations) {
         this.Stations = stations;
