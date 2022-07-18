@@ -2,15 +2,11 @@ package ru.netology.Radio;
 
 public class Radio {
     private int currentStation;
+    private int lastStation = 9;
+    private int firstStation = 0;
     private int currentVolume;
-    private int Stations = 10;
-
-    public Radio(int stations) {
-        this.Stations = stations;
-    }
-
-    public Radio() {
-    }
+    private int maxVolume = 100;
+    private int minVolume = 0;
 
     public int getCurrentStation() {
         return currentStation;
@@ -21,38 +17,39 @@ public class Radio {
     }
 
     public void next() {
-        setCurrentStation(currentStation++);
+        setCurrentStation(currentStation + 1);
     }
 
     public void prev() {
-        setCurrentStation(currentStation--);
+        setCurrentStation(currentStation - 1);
     }
 
-    public void more() {
-        setCurrentVolume(currentVolume++);
+    public void plusOne() {
+        setCurrentVolume(currentVolume + 1);
     }
 
-    public void less() {
-        setCurrentVolume(currentVolume--);
+    public void minusOne() {
+        setCurrentVolume(currentVolume - 1);
     }
 
-    public void setCurrentStation(int currentStation) {
-        if (currentStation < 0) {
-            currentStation = Stations;
+    public void setCurrentStation(int desiredStation) {
+
+        if (desiredStation > lastStation) {
+            this.currentStation = firstStation;
+        } else if (desiredStation < firstStation) {
+            this.currentStation = lastStation;
+        } else {
+            this.currentStation = desiredStation;
         }
-        if (currentStation > 30) {
-            currentStation = Stations;
-        }
-        this.currentStation = currentStation;
     }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume <= 0) {
-            currentVolume = 0;
+        if (currentVolume >= maxVolume) {
+            this.currentVolume = maxVolume;
+        } else if (currentVolume <= minVolume) {
+            this.currentVolume = minVolume;
+        } else {
+            this.currentVolume = currentVolume;
         }
-        if (currentVolume >= 100) {
-            currentVolume = 100;
-        }
-        this.currentVolume = currentVolume;
     }
 }

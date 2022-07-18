@@ -7,87 +7,130 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RadioTest {
 
     @Test
-    public void getCurrentStation() {
-        Radio thisIs = new Radio(30);
+    public void shouldTurnNextStation() {
+        Radio thisIs = new Radio();
         thisIs.setCurrentStation(5);
-        assertEquals(5, thisIs.getCurrentStation());
+        thisIs.next();
+        assertEquals(6, thisIs.getCurrentStation());
     }
 
     @Test
-    public void shouldSetCurrentStation() {
-        Radio thisIs = new Radio(10);
-        thisIs.setCurrentStation(-1);
-        assertEquals(10, thisIs.getCurrentStation());
+    public void shouldTurnPrevStation() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentStation(3);
+        thisIs.prev();
+        assertEquals(2, thisIs.getCurrentStation());
     }
 
     @Test
-    public void setCurrentStation() {
-        Radio thisIs = new Radio(30);
-        thisIs.setCurrentStation(31);
-        assertEquals(30, thisIs.getCurrentStation());
-    }
-
-    @Test
-    public void setCurrentStation3() {
-        Radio thisIs = new Radio(10);
+    public void shouldTurnMaxStation() {
+        Radio thisIs = new Radio();
         thisIs.setCurrentStation(9);
+        thisIs.next();
+        assertEquals(0, thisIs.getCurrentStation());
+    }
+
+    @Test
+    public void shouldTurnMinStation() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentStation(0);
+        thisIs.prev();
         assertEquals(9, thisIs.getCurrentStation());
     }
 
     @Test
-    public void next() {
-        Radio thisIs = new Radio(11);
-        thisIs.setCurrentStation(12);
-        thisIs.next();
-        assertEquals(12, thisIs.getCurrentStation());
-    }
-
-    @Test
-    public void prev() {
-        Radio thisIs = new Radio(12);
-        thisIs.setCurrentStation(15);
-        thisIs.prev();
-        assertEquals(15, thisIs.getCurrentStation());
-    }
-
-    //  громкость
-    @Test
-    public void getCurrentVolume() {
+    public void shouldTurnAfterMinStation() {
         Radio thisIs = new Radio();
-        thisIs.setCurrentVolume(6);
+        thisIs.setCurrentStation(0);
+        thisIs.next();
+        assertEquals(1, thisIs.getCurrentStation());
+    }
+
+    @Test
+    public void shouldTurnPrevMaxStation() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentStation(9);
+        thisIs.prev();
+        assertEquals(8, thisIs.getCurrentStation());
+    }
+
+    @Test
+    public void shouldTurnBeforeMaxStation() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentStation(8);
+        thisIs.next();
+        assertEquals(9, thisIs.getCurrentStation());
+    }
+
+    @Test
+    public void shouldTurnAfterOneStation() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentStation(1);
+        thisIs.next();
+        assertEquals(2, thisIs.getCurrentStation());
+    }
+
+    @Test
+    public void shouldTurnBeforeOneStation() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentStation(1);
+        thisIs.prev();
+        assertEquals(0, thisIs.getCurrentStation());
+    }
+
+    @Test
+    public void shouldCountMinVolume() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentVolume(0);
+        thisIs.plusOne();
+        assertEquals(1, thisIs.getCurrentVolume());
+    }
+
+    @Test
+    public void shouldCountBeforeMaxVolume() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentVolume(9);
+        thisIs.plusOne();
+        assertEquals(10, thisIs.getCurrentVolume());
+    }
+
+    @Test
+    public void shouldCountMaxVolume() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentVolume(10);
+        thisIs.plusOne();
+        assertEquals(11, thisIs.getCurrentVolume());
+    }
+
+    @Test
+    public void shouldCountMiddleVolume() {
+        Radio thisIs = new Radio();
+        thisIs.setCurrentVolume(5);
+        thisIs.plusOne();
         assertEquals(6, thisIs.getCurrentVolume());
     }
 
     @Test
-    public void setCurrentVolume() {
+    public void shouldCountOverVolume() {
         Radio thisIs = new Radio();
         thisIs.setCurrentVolume(101);
+        thisIs.plusOne();
         assertEquals(100, thisIs.getCurrentVolume());
     }
 
-
     @Test
-    public void more() {
-        Radio thisIs = new Radio();
-        thisIs.setCurrentVolume(15);
-        thisIs.more();
-        assertEquals(15, thisIs.getCurrentVolume());
-    }
-
-
-    @Test
-    public void less() {
+    public void shouldCountMinusVolume() {
         Radio thisIs = new Radio();
         thisIs.setCurrentVolume(-1);
-        thisIs.less();
+        thisIs.minusOne();
         assertEquals(0, thisIs.getCurrentVolume());
     }
 
     @Test
-    public void lessN() {
+    public void shouldCountAfterMinVolume() {
         Radio thisIs = new Radio();
-        thisIs.setCurrentVolume(85);
-        thisIs.less();
-        assertEquals(85, thisIs.getCurrentVolume());
+        thisIs.setCurrentVolume(1);
+        thisIs.plusOne();
+        assertEquals(2, thisIs.getCurrentVolume());
     }
 }
