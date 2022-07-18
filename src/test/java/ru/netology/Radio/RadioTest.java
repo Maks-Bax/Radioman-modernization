@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RadioTest {
 
     @Test
-    public void shouldTurnNextStation() {
+    public void shouldNextStation() {
         Radio thisIs = new Radio();
         thisIs.setCurrentStation(5);
         thisIs.next();
@@ -15,7 +15,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldTurnPrevStation() {
+    public void shouldPrevStation() {
         Radio thisIs = new Radio();
         thisIs.setCurrentStation(3);
         thisIs.prev();
@@ -23,7 +23,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldTurnMaxStation() {
+    public void shouldMaxStation() {
         Radio thisIs = new Radio();
         thisIs.setCurrentStation(9);
         thisIs.next();
@@ -31,7 +31,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldTurnMinStation() {
+    public void shouldMinStation() {
         Radio thisIs = new Radio();
         thisIs.setCurrentStation(0);
         thisIs.prev();
@@ -39,7 +39,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldTurnAfterMinStation() {
+    public void shouldMindMinStation() {
         Radio thisIs = new Radio();
         thisIs.setCurrentStation(0);
         thisIs.next();
@@ -55,7 +55,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldTurnBeforeMaxStation() {
+    public void shouldFartherMaxStation() {
         Radio thisIs = new Radio();
         thisIs.setCurrentStation(8);
         thisIs.next();
@@ -63,7 +63,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldTurnAfterOneStation() {
+    public void shouldOneStation() {
         Radio thisIs = new Radio();
         thisIs.setCurrentStation(1);
         thisIs.next();
@@ -71,7 +71,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldTurnBeforeOneStation() {
+    public void shouldFartherOneStation() {
         Radio thisIs = new Radio();
         thisIs.setCurrentStation(1);
         thisIs.prev();
@@ -79,7 +79,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldCountMinVolume() {
+    public void shouldLogicMinVolume() {
         Radio thisIs = new Radio();
         thisIs.setCurrentVolume(0);
         thisIs.plusOne();
@@ -87,7 +87,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldCountBeforeMaxVolume() {
+    public void shouldLogicMaxVolume() {
         Radio thisIs = new Radio();
         thisIs.setCurrentVolume(9);
         thisIs.plusOne();
@@ -95,7 +95,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldCountMaxVolume() {
+    public void shouldLogic1MaxVolume() {
         Radio thisIs = new Radio();
         thisIs.setCurrentVolume(10);
         thisIs.plusOne();
@@ -103,7 +103,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldCountMiddleVolume() {
+    public void shouldLogicMindVolume() {
         Radio thisIs = new Radio();
         thisIs.setCurrentVolume(5);
         thisIs.plusOne();
@@ -111,7 +111,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldCountOverVolume() {
+    public void shouldLastVolume() {
         Radio thisIs = new Radio();
         thisIs.setCurrentVolume(101);
         thisIs.plusOne();
@@ -119,7 +119,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldCountMinusVolume() {
+    public void shouldLogicVolume() {
         Radio thisIs = new Radio();
         thisIs.setCurrentVolume(-1);
         thisIs.minusOne();
@@ -127,7 +127,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldCountAfterMinVolume() {
+    public void shouldLogicalMinVolume() {
         Radio thisIs = new Radio();
         thisIs.setCurrentVolume(1);
         thisIs.plusOne();
