@@ -5,10 +5,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadioTest {
+    @Test
+    public void shouldLastFirstMaxMinStationVolume() {
+        Radio thisIs = new Radio(5, 3, 30, 25);
+        thisIs.setCurrentStation(6);
+        thisIs.setCurrentVolume(55);
+        thisIs.plusOne();
+        assertEquals(4, 4);
+    }
 
     @Test
     public void shouldNextStation() {
-        Radio thisIs = new Radio();
+        Radio thisIs = new Radio(10);
         thisIs.setCurrentStation(5);
         thisIs.next();
         assertEquals(6, thisIs.getCurrentStation());
@@ -16,7 +24,7 @@ class RadioTest {
 
     @Test
     public void shouldPrevStation() {
-        Radio thisIs = new Radio();
+        Radio thisIs = new Radio(10);
         thisIs.setCurrentStation(3);
         thisIs.prev();
         assertEquals(2, thisIs.getCurrentStation());
@@ -24,7 +32,7 @@ class RadioTest {
 
     @Test
     public void shouldMaxStation() {
-        Radio thisIs = new Radio();
+        Radio thisIs = new Radio(10);
         thisIs.setCurrentStation(9);
         thisIs.next();
         assertEquals(0, thisIs.getCurrentStation());
@@ -56,7 +64,7 @@ class RadioTest {
 
     @Test
     public void shouldFartherMaxStation() {
-        Radio thisIs = new Radio();
+        Radio thisIs = new Radio(10);
         thisIs.setCurrentStation(8);
         thisIs.next();
         assertEquals(9, thisIs.getCurrentStation());
@@ -78,6 +86,7 @@ class RadioTest {
         assertEquals(0, thisIs.getCurrentStation());
     }
 
+    //volume
     @Test
     public void shouldLogicMinVolume() {
         Radio thisIs = new Radio();
